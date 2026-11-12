@@ -19,10 +19,11 @@ namespace GorillaTagAI
         private bool previousSelect;
 
         private void Start()
-        {
-            BuildMenu();
-            SetVisible(false);
-        }
+{
+    InspectControllerInput();
+    BuildMenu();
+    SetVisible(false);
+}
 
         private void Update()
         {
