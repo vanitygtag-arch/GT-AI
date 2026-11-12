@@ -336,7 +336,7 @@ Debug.Log("[GorillaTagAI] Menu position before placement: " +
                 property.Name + " (" + property.PropertyType.Name + ")");
         }
     }
-    
+}    
     }
 
     public sealed class VRMenuButton : MonoBehaviour
