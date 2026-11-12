@@ -1,0 +1,52 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
+    <AssemblyName>GorillaTagAI</AssemblyName>
+    <RootNamespace>GorillaTagAI</RootNamespace>
+    <GameDir Condition="'$(GameDir)' == ''">C:\Program Files (x86)\Steam\steamapps\common\Gorilla Tag</GameDir>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BepInEx">
+      <HintPath>$(GameDir)\BepInEx\core\BepInEx.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>$(GameDir)\Gorilla Tag_Data\Managed\UnityEngine.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>$(GameDir)\Gorilla Tag_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+  <HintPath>$(GameDir)\Gorilla Tag_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
+  <Private>false</Private>
+</Reference>
+
+<Reference Include="UnityEngine.InputLegacyModule">
+  <HintPath>$(GameDir)\Gorilla Tag_Data\Managed\UnityEngine.InputLegacyModule.dll</HintPath>
+  <Private>false</Private>
+</Reference>
+<Reference Include="UnityEngine.XRModule">
+     <HintPath>$(GameDir)\Gorilla Tag_Data\Managed\UnityEngine.XRModule.dll</HintPath>
+     <Private>false</Private>
+   </Reference>
+   <Reference Include="UnityEngine.PhysicsModule">
+  <HintPath>$(GameDir)\Gorilla Tag_Data\Managed\UnityEngine.PhysicsModule.dll</HintPath>
+  <Private>false</Private>
+</Reference>
+<Reference Include="Assembly-CSharp">
+  <HintPath>$(GameDir)\Gorilla Tag_Data\Managed\Assembly-CSharp.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine.TextRenderingModule">
+  <HintPath>$(GameDir)\Gorilla Tag_Data\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
+  <Private>false</Private>
+</Reference>
+  </ItemGroup>
+  <Target Name="CopyPluginToGame" AfterTargets="Build" Condition="Exists('$(GameDir)\BepInEx\plugins')">
+    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(GameDir)\BepInEx\plugins" SkipUnchangedFiles="true" />
+  </Target>
+</Project>
