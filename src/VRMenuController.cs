@@ -31,7 +31,11 @@ namespace GorillaTagAI
     Debug.Log("[GorillaTagAI] VRMenuController Update is running.");
 }
 
-            InputDevice left = ControllerInputPoller.instance.leftControllerDevice;
+            ControllerInputPoller poller = ControllerInputPoller.instance;
+
+InputDevice left = poller != null
+    ? poller.leftControllerDevice
+    : default(InputDevice);
             InputDevice right = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
             InputDevice head = InputDevices.GetDeviceAtXRNode(XRNode.Head);
 
