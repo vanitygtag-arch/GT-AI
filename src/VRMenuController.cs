@@ -291,6 +291,51 @@ Debug.Log("[GorillaTagAI] Menu position before placement: " +
             text.color = Color.white;
             pageObjects.Add(textObject);
         }
+
+        private void InspectControllerInput()
+{
+    Type type = typeof(ControllerInputPoller);
+
+    foreach (FieldInfo field in type.GetFields(
+        BindingFlags.Instance |
+        BindingFlags.Public |
+        BindingFlags.NonPublic))
+    {
+        string name = field.Name.ToLowerInvariant();
+
+        if (name.Contains("left") ||
+            name.Contains("right") ||
+            name.Contains("trigger") ||
+            name.Contains("grip") ||
+            name.Contains("joystick") ||
+            name.Contains("button") ||
+            name.Contains("axis"))
+        {
+            Debug.Log("[GorillaTagAI] INPUT FIELD: " +
+                field.Name + " (" + field.FieldType.Name + ")");
+        }
+    }
+
+    foreach (PropertyInfo property in type.GetProperties(
+        BindingFlags.Instance |
+        BindingFlags.Public |
+        BindingFlags.NonPublic))
+    {
+        string name = property.Name.ToLowerInvariant();
+
+        if (name.Contains("left") ||
+            name.Contains("right") ||
+            name.Contains("trigger") ||
+            name.Contains("grip") ||
+            name.Contains("joystick") ||
+            name.Contains("button") ||
+            name.Contains("axis"))
+        {
+            Debug.Log("[GorillaTagAI] INPUT PROPERTY: " +
+                property.Name + " (" + property.PropertyType.Name + ")");
+        }
+    }
+    
     }
 
     public sealed class VRMenuButton : MonoBehaviour
