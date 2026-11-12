@@ -1,0 +1,15 @@
+
+# Visual Studio
+.vs/
+*.suo
+*.user
+
+# Build output
+bin/
+obj/
+
+# Temporary files
+*.log
+*.tmp
+
+**/copilotindices/
